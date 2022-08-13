@@ -1,2 +1,1 @@
-print("Bazzar App")
-import streamlit as st
+import steamlit as st

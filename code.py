@@ -1,10 +1,11 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
+
 
 
 import chart_studio.plotly as py
-import plotly.graph_obj as go
+from plotly import graph_objs as go
 from plotly.offline import plot
 
 

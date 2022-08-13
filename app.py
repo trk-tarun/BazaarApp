@@ -1,3 +1,2 @@
-print(Bazzar App)
 import streamlit as st
-print("Commit by Atom starting of  Project")
+st.set_page_config(page_title = "Bazaar : Stock Market Prediction App", page_icon="s", layout="wide")

@@ -1,8 +1,1 @@
-{
-  "ticker":"AAPL",
-  "fff": 100,
-  "duration": "day",
-  "from": "2022-04-01",
-  "to": "2022-06-01"
-
-}
+{"from": "", "to": "", "ticker": "AAPL "}

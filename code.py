@@ -1,5 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
+
+
+import chart_studio.plotly as py
+import plotly.graph_obj as go
+from plotly.offline import plot
 
 
 
@@ -7,16 +13,21 @@ import matplotlib.pyplot as plt
 # Historical stocks price dataset
 datafile = pd.read_csv('Dataset\dataset2.csv')
 
-print(datafile) #test datafile
+#print(datafile) #test datafile
 
+datafile.info()
+
+#reindexing using DateTimeIndex
+datafile['Date'] = pd.to_datetime(datafile['Date'])
+
+print(f'Dataframe between{datafile.Date.min()}{datafile.Date.max()}')
 #summary of dataset
 
 print(datafile.describe())
 
 #Objective 1: Using Linear Regression
 
-#reindexing using DateTimeIndex
-datafile.set_index(pd.DatetimeIndex(datafile['Date']),inplace=True)
+
 
 datafile = datafile[['Adj Close']]
 

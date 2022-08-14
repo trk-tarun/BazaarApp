@@ -5,6 +5,8 @@ from polygon import RESTClient
 from typing import cast
 from urllib3 import HTTPResponse
 import pandas as pd
+
+
 def do():
     client = RESTClient("gcgQPhAjaGgupH0NAIbrce3VxFQdulSL")  # api_key is used
 
@@ -21,7 +23,6 @@ def do():
                     raw=True,
                 ),
                 )
-
 
     f = (aggs.data.decode("utf-8"))
 

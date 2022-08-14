@@ -89,7 +89,29 @@ from  sklearn.linear_model import  LinearRegression
 lm = LinearRegression()
 lm.fit(X_train,Y_train)
 
+#plotting actual and predicted values
 
+trace0 = go.Scatter(
+    x = X_train.T[0],
+    y = Y_train,
+    mode = 'markers',
+    name = 'Actual'
+
+)
+
+trace1 = go.Scatter(
+    x = X_train.T[0],
+    y = lm.predict(X_train).T,
+    mode='lines',
+    name = 'Predicted'
+
+)
+
+company_data = [trace0,trace1]
+layout.xaxis.title.text = 'Day'
+plot2 = go.Figure(data=company_data, layout=layout)
+
+iplot(plot2)
 
 
 

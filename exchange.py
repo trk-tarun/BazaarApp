@@ -18,11 +18,14 @@ def do():
                     "day",
                     jsn["from"],
                     jsn["to"],
-                    raw=False,
+                    raw=True,
                 ),
                 )
 
+
     f = (aggs.data.decode("utf-8"))
+
+    print(aggs)
     box = json.loads(f)
     print(type(f))
 
@@ -34,5 +37,6 @@ def do():
             writer.writerows(box["results"])
         except:
             print(box)
+
 
 do()

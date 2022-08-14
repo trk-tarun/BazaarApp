@@ -4,6 +4,7 @@
 import csv
 import json
 import exchange
+import code
 
 from flask import Flask, render_template, request
 
@@ -24,8 +25,9 @@ def result():
         result = request.form
         with open('config/input.json', "w") as inp:
             json.dump(result, inp)
-        exchange.do();
-        return "<h1>Results updated in csv. <br>Work in progress ahead.</h1>"
+        exchange.yfin()
+        code.run()
+        return render_template("historicalpredicted.html")
 
 
 if __name__ == '__main__':

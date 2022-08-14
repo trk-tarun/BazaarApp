@@ -16,7 +16,7 @@ trainData = data.iloc[:, 4:5].values
 data.info()
 
 sc = MinMaxScaler(feature_range=(0,1))
-trainData = sc.fit_transform(trainData)\
+trainData = sc.fit_transform(trainData)
 trainData.shape
 
 ###
@@ -26,7 +26,10 @@ Y_train = []
 
 #60 is time step  ## 1149 = length of data
 
-for i in range (60, 1149):
+length1 = len(trainData)
+
+
+for i in range (60, length1):
     X_train.append(trainData[i-60:i, 0])
     Y_train.append(trainData[i,0])
 
@@ -83,3 +86,14 @@ for i in range(timestep, length):
 X_test = np.array(X_test)
 X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1],1))
 X_test.shape
+
+y_pred = model.predict(X_test)
+
+predicted_price = sc.inverse_transform(y_pred)
+
+plt.plot(y_test, color='red', label = 'Actual Stock Price')
+plt.plot(predicted_price, color=green, label = 'Predicted Stock Price')
+plt.xlabel('Time')
+plt.ylabel('Stock Price')
+plt.legend()
+plt.show()

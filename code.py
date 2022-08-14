@@ -8,9 +8,10 @@ import matplotlib.pyplot as plt
 import chart_studio.plotly as py
 import plotly.graph_objs as go
 from plotly.offline import plot
+import plotly.express as px
 
 from plotly.offline import  download_plotlyjs, init_notebook_mode, plot, iplot
-init_notebook_mode(connected=True)
+# init_notebook_mode(connected=True)
 
 import plotly.express as px
 
@@ -59,7 +60,8 @@ layout = go.Layout(
 )
 
 company_data = [{'x':datafile['Date'], 'y':datafile['Close']}]
-plot = go.Figure(data = company_data, layout=layout)
+figplot = go.Figure(data = company_data, layout=layout)
+figplot.write_html("historicalplot.html")
 
 #iplot(plot)  # plotting graph
 
@@ -79,7 +81,7 @@ from sklearn.metrics import r2_score
 #Traning and Testing  Data Split
 
 X = np.array(datafile.index).reshape(-1,1)
-Y = datafile['close']
+Y = datafile['Close']
 X_train , X_test, Y_train, Y_test = train_test_split(X,Y, test_size=0.3, random_state=101)
 
 #features scaling
@@ -111,9 +113,8 @@ trace1 = go.Scatter(
 
 company_data = [trace0,trace1]
 layout.xaxis.title.text = 'Day'
-plot2 = go.Figure(data=company_data, layout=layout)
-
-iplot(plot2)
+figplot2 = go.Figure(data=company_data, layout=layout)
+figplot2.write_html("historicalpredicted.html")
 
 
 

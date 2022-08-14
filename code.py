@@ -2,9 +2,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-
-
-
 import chart_studio.plotly as py
 import plotly.graph_objs as go
 from plotly.offline import plot
@@ -125,4 +122,11 @@ figplot2.write_html("historicalpredicted.html")
 # #printing info
 # print(datafile.info())
 
+#calculate scores for evaluation of model
+scores = f'''
+{'Metric'.ljust(10)}{'Train'.center(20)}{'Test'.center(20)}
+{'r2_score'.ljust(10)}{r2_score(Y_train, lm.predict(X_train))}\t{r2_score(Y_test, lm.predict(X_test))}
+{'MSE'.ljust(10)}{mse(Y_train, lm.predict(X_train))}\t{mse(Y_test, lm.predict(X_test))}
+'''
 
+print(scores)

@@ -1,3 +1,4 @@
+
 # import streamlit as st
 # st.set_page_config(page_title = "Bazaar : Stock Market Prediction App", page_icon="s", layout="wide")
 import csv
@@ -29,3 +30,4 @@ def result():
 
 if __name__ == '__main__':
     app.run(debug=True)
+

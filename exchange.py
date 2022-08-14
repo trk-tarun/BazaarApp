@@ -1,11 +1,10 @@
 import csv
+from typing import cast
 
 from flask import json
 from polygon import RESTClient
-from typing import cast
 from urllib3 import HTTPResponse
-import pandas as pd
-
+import yfinance as yf
 
 def do():
     client = RESTClient("gcgQPhAjaGgupH0NAIbrce3VxFQdulSL")  # api_key is used
@@ -30,14 +29,34 @@ def do():
     box = json.loads(f)
     print(type(f))
 
-    header = ["v", "vw", "o", "c", "h", "l", "t", "n"]
-    with open("config/output.csv", "w") as cs:
+    header = ["date", "o", "h", "l", "c", "vw", "v", "n", "t"]
+    with open("config/temp.csv", "w") as cs:
         writer = csv.DictWriter(cs, fieldnames=header)
         writer.writeheader()
         try:
             writer.writerows(box["results"])
-        except:
+        except Exception as error:
+            print(error)
             print(box)
+    with open("config/temp.csv", "r") as source:
+        rdr = csv.reader(source)
+        with open("output.csv", "w") as result:
+            wtr = csv.writer(result)
+            for r in rdr:
+                wtr.writerow((r[0], r[1], r[2], r[3], r[4], r[5], r[6]))
 
+def yfin():
 
-do()
+    from yahoofinancials import YahooFinancials
+
+    aapl_df = yf.download('AAPL',
+                          start='2019-01-01',
+                          end='2021-06-12',
+                          progress=False,
+                          )
+    aapl_df.to_csv('config/output.csv')
+    print("CSV Exported")
+    # print(aapl_df)
+    # print(type(aapl_df))
+
+# yfin()

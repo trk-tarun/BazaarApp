@@ -50,3 +50,36 @@ model.add(Dropout(0.2))
 
 model.add(Dense(units=1))
 model.compile(optimizer='adam', loss="mean_squared_error")
+
+hist = model.fit(X_train, Y_train, epochs = 20 , batch_size=32, verbose=2)
+
+plt.plot(hist.history['loss'])
+plt.title('Training model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train'], loc='upper left')
+plt.show()
+
+
+##Now test data set
+
+testData = pd.read_csv('Dataset2/apple_test_dataset.csv')
+testData["Close"] = pd.to_numeric(testData.Close,errors='coerce')
+testData = data.dropna()
+testData.iloc[:, 4:5]
+y_test = testData.iloc[60:,0:].values
+
+#input array for model
+
+inputClosing = testData.iloc[:,0:].values
+inputClosing_scaled = sc.transform((inputClosing))
+inputClosing_scaled.shape
+X_test = []
+length = len(testData)
+timestep = 60
+
+for i in range(timestep, length):
+    X_test.append(inputClosing_scaled[i-timestep:i,0])
+X_test = np.array(X_test)
+X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1],1))
+X_test.shape

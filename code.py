@@ -67,6 +67,28 @@ iplot(plot)  # plotting graph
 from sklearn.model_selection import train_test_split
 
 #Preprocessing
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
+
+#Model Evaluation
+from sklearn.metrics import  mean_squared_error as mse
+from sklearn.metrics import r2_score
+
+#Traning and Testing  Data Split
+
+X = np.array(datafile.index).reshape(-1,1)
+Y = datafile['close']
+X_train , X_test, Y_train, Y_test = train_test_split(X,Y, test_size=0.3, random_state=101)
+
+#features scaling
+scaler = StandardScaler().fit(X_train)
+
+from  sklearn.linear_model import  LinearRegression
+
+#creating a liner model
+lm = LinearRegression()
+lm.fit(X_train,Y_train)
+
 
 
 

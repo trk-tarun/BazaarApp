@@ -59,4 +59,4 @@ def yfin():
     # print(aapl_df)
     # print(type(aapl_df))
 
-yfin()
+# yfin()

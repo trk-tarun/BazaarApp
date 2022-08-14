@@ -1,6 +1,4 @@
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import MinMaxScaler
-from keras.models import Sequential
-from keras.layers import Dense,LSTM,Dropout
+with open("templates/index.html") as ht2:
+    cont2 = ht2.readlines()[4:-2]
+for x in cont2:
+    print(x)

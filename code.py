@@ -9,6 +9,8 @@ import chart_studio.plotly as py
 import plotly.graph_objs as go
 from plotly.offline import plot
 
+from plotly.offline import  download_plotlyjs, init_notebook_mode, plot, iplot
+init_notebook_mode(connected=True)
 
 
 
@@ -54,8 +56,18 @@ layout = go.Layout(
     )
 )
 
+company_data = [{'x':datafile['Date'], 'y':datafile['Close']}]
+plot = go.Figure(data = company_data, layout=layout)
+
+iplot(plot)  # plotting graph
+
 
 #Objective 1: Using Linear Regression
+
+from sklearn.model_selection import train_test_split
+
+#Preprocessing
+
 
 
 

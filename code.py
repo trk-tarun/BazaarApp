@@ -15,7 +15,7 @@ import plotly.express as px
 
 
 # Historical stocks price dataset
-datafile = pd.read_csv('Dataset\dataset2.csv')
+datafile = pd.read_csv('Dataset/dataset2.csv')
 
 #print(datafile) #test datafile
 

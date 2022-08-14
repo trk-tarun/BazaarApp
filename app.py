@@ -24,7 +24,7 @@ def result():
         result = request.form
         with open('config/input.json', "w") as inp:
             json.dump(result, inp)
-        exchange.do();
+        exchange.yfin();
         return "<h1>Results updated in csv. <br>Work in progress ahead.</h1>"
 
 

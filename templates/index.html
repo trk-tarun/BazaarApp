@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BazaarApp</title>
+    <style>
+        {
+            font: 1rem 'Fira Sans', sans-serif
+        ;
+        }
+        label {
+            display: block;
+            font: 1rem 'Fira Sans', sans-serif;
+        }
+
+        input,
+        label {
+            margin: .4rem 0;
+        }
+
+
+    </style>
+</head>
+<body>
+<h1> Welcome to Bazaar App</h1>
+<hr>
+<h2>Lets get a prediction for you...</h2>
+<form action="ciao" method="post">
+    <label for="from">Start date:</label>
+
+    <input type="date" id="from" name="from"
+          required/>
+    <label for="to">End date:</label>
+
+    <input type="date" id="to" name="to"
+           required>
+    <label for="ticker">Ticker:</label><select required id="ticker" name="ticker" placeholder="Pick your stock...">
+    {% for obj in psk %}
+    <option value="{{ obj[0] }}">{{obj[0]}} {{ obj[1] }}</option>
+    {% endfor %}
+</select ><br>
+    <input class="btn" type="submit">
+</form>
+</body>
+</html>

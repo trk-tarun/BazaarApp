@@ -4,8 +4,9 @@ import matplotlib.pyplot as plt
 
 
 
+
 import chart_studio.plotly as py
-from plotly import graph_objs as go
+import plotly.graph_objs as go
 from plotly.offline import plot
 
 
@@ -28,6 +29,31 @@ print(f'Total Days = {(datafile.Date.max() - datafile.Date.min()).days} days')
 #print(datafile.describe())
 
 datafile[['Open', 'High', 'Low', 'Close', 'Adj Close']].plot(kind='box')
+
+#layout for plot
+
+layout = go.Layout(
+    title = 'Stock Price of Company',
+    xaxis = dict(
+        title = 'Date',
+        titlefont = dict(
+            family = 'Ariel',
+            size = 20,
+            color='#000000'
+        )
+
+    ),
+
+    yaxis = dict(
+        title='Price',
+        titlefont= dict(
+            family ='Ariel',
+            size=20,
+            color='#000000'
+        )
+    )
+)
+
 
 #Objective 1: Using Linear Regression
 
